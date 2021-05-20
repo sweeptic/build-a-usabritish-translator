@@ -98,6 +98,140 @@ suite('Unit Tests', () => {
     assert.strictEqual(result.text, 'Lunch is at 12:15 today.');
     assert.strictEqual(result.translation, 'Lunch is at 12.15 today.');
   });
+
+  test('Translate We watched the footie match for a while. to American English', () => {
+    const result = translator.translate('We watched the footie match for a while.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'We watched the footie match for a while.');
+    assert.strictEqual(result.translation, 'We watched the soccer match for a while.');
+  });
+
+  test('Translate Paracetamol takes up to an hour to work. to American English', () => {
+    const result = translator.translate('Paracetamol takes up to an hour to work.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'Paracetamol takes up to an hour to work.');
+    assert.strictEqual(result.translation, 'Tylenol takes up to an hour to work.');
+  });
+
+  test('Translate First, caramelise the onions. to American English', () => {
+    const result = translator.translate('First, caramelise the onions.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'First, caramelise the onions.');
+    assert.strictEqual(result.translation, 'First, caramelize the onions.');
+  });
+
+  test('Translate I spent the bank holiday at the funfair. to American English', () => {
+    const result = translator.translate('I spent the bank holiday at the funfair.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'I spent the bank holiday at the funfair.');
+    assert.strictEqual(result.translation, 'I spent the public holiday at the carnival.');
+  });
+
+  test('Translate I had a bicky then went to the chippy. to American English', () => {
+    const result = translator.translate('I had a bicky then went to the chippy.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'I had a bicky then went to the chippy.');
+    assert.strictEqual(result.translation, 'I had a cookie then went to the fish-and-chip shop.');
+  });
+
+  test("Translate I've just got bits and bobs in my bum bag. to American English", () => {
+    const result = translator.translate("I've just got bits and bobs in my bum bag.", 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, "I've just got bits and bobs in my bum bag.");
+    assert.strictEqual(result.translation, "I've just got odds and ends in my fanny pack.");
+  });
+
+  test('Translate The car boot sale at Boxted Airfield was called off. to American English', () => {
+    const result = translator.translate('The car boot sale at Boxted Airfield was called off.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'The car boot sale at Boxted Airfield was called off.');
+    assert.strictEqual(result.translation, 'The swap meet at Boxted Airfield was called off.');
+  });
+
+  test('Translate Have you met Mrs Kalyani? to American English', () => {
+    const result = translator.translate('Have you met Mrs Kalyani?', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'Have you met Mrs Kalyani?');
+    assert.strictEqual(result.translation, 'Have you met Mrs. Kalyani?');
+  });
+
+  test("Translate Prof Joyner of King's College, London. to American English", () => {
+    const result = translator.translate("Prof Joyner of King's College, London.", 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, "Prof Joyner of King's College, London.");
+    assert.strictEqual(result.translation, "Prof. Joyner of King's College, London.");
+  });
+
+  test('Translate Tea time is usually around 4 or 4.30. to American English', () => {
+    const result = translator.translate('Tea time is usually around 4 or 4.30.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'Tea time is usually around 4 or 4.30.');
+    assert.strictEqual(result.translation, 'Tea time is usually around 4 or 4:30.');
+  });
+
+  test('Highlight translation in Mangoes are my favorite fruit.', () => {
+    const result = translator.translate('Mangoes are my favorite fruit.', 'american-to-british');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.property(result, 'highlightedTranslation', 'result should have highlighted translation property');
+    assert.strictEqual(result.text, 'Mangoes are my favorite fruit.');
+    assert.strictEqual(result.translation, 'Mangoes are my favourite fruit.');
+    assert.strictEqual(result.highlightedTranslation, 'Mangoes are my <span class="highlight">favourite</span> fruit.');
+  });
+
+  test('Highlight translation in I ate yogurt for breakfast.', () => {
+    const result = translator.translate('I ate yogurt for breakfast.', 'american-to-british');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.property(result, 'highlightedTranslation', 'result should have highlighted translation property');
+    assert.strictEqual(result.text, 'I ate yogurt for breakfast.');
+    assert.strictEqual(result.translation, 'I ate yoghurt for breakfast.');
+    assert.strictEqual(result.highlightedTranslation, 'I ate <span class="highlight">yoghurt</span> for breakfast.');
+  });
+
+  test('Highlight translation in We watched the footie match for a while.', () => {
+    const result = translator.translate('We watched the footie match for a while.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.property(result, 'highlightedTranslation', 'result should have highlighted translation property');
+    assert.strictEqual(result.text, 'We watched the footie match for a while.');
+    assert.strictEqual(result.translation, 'We watched the soccer match for a while.');
+    assert.strictEqual(result.highlightedTranslation, 'We watched the <span class="highlight">soccer</span> match for a while.');
+  });
+
+  test('Highlight translation in Paracetamol takes up to an hour to work.', () => {
+    const result = translator.translate('Paracetamol takes up to an hour to work.', 'british-to-american');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.property(result, 'highlightedTranslation', 'result should have highlighted translation property');
+    assert.strictEqual(result.text, 'Paracetamol takes up to an hour to work.');
+    assert.strictEqual(result.translation, 'Tylenol takes up to an hour to work.');
+    assert.strictEqual(result.highlightedTranslation, '<span class="highlight">Tylenol</span> takes up to an hour to work.');
+  });
 });
 
 /*
@@ -114,95 +248,6 @@ suite('Unit Tests', () => {
 *Translate Lunch is at 12:15 today. to British English
 */
 
-test('Translate We watched the footie match for a while. to American English', () => {
-  const result = translator.translate('We watched the footie match for a while.', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'We watched the footie match for a while.');
-  assert.strictEqual(result.translation, 'We watched the soccer match for a while.');
-});
-
-test('Translate Paracetamol takes up to an hour to work. to American English', () => {
-  const result = translator.translate('Paracetamol takes up to an hour to work.', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'Paracetamol takes up to an hour to work.');
-  assert.strictEqual(result.translation, 'Tylenol takes up to an hour to work.');
-});
-
-test('Translate First, caramelise the onions. to American English', () => {
-  const result = translator.translate('First, caramelise the onions.', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'First, caramelise the onions.');
-  assert.strictEqual(result.translation, 'First, caramelize the onions.');
-});
-
-test('Translate I spent the bank holiday at the funfair. to American English', () => {
-  const result = translator.translate('I spent the bank holiday at the funfair.', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'I spent the bank holiday at the funfair.');
-  assert.strictEqual(result.translation, 'I spent the public holiday at the carnival.');
-});
-
-test('Translate I had a bicky then went to the chippy. to American English', () => {
-  const result = translator.translate('I had a bicky then went to the chippy.', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'I had a bicky then went to the chippy.');
-  assert.strictEqual(result.translation, 'I had a cookie then went to the fish-and-chip shop.');
-});
-
-test("Translate I've just got bits and bobs in my bum bag. to American English", () => {
-  const result = translator.translate("I've just got bits and bobs in my bum bag.", 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, "I've just got bits and bobs in my bum bag.");
-  assert.strictEqual(result.translation, "I've just got odds and ends in my fanny pack.");
-});
-
-test('Translate The car boot sale at Boxted Airfield was called off. to American English', () => {
-  const result = translator.translate('The car boot sale at Boxted Airfield was called off.', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'The car boot sale at Boxted Airfield was called off.');
-  assert.strictEqual(result.translation, 'The swap meet at Boxted Airfield was called off.');
-});
-
-test('Translate Have you met Mrs Kalyani? to American English', () => {
-  const result = translator.translate('Have you met Mrs Kalyani?', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'Have you met Mrs Kalyani?');
-  assert.strictEqual(result.translation, 'Have you met Mrs. Kalyani?');
-});
-
-test("Translate Prof Joyner of King's College, London. to American English", () => {
-  const result = translator.translate("Prof Joyner of King's College, London.", 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, "Prof Joyner of King's College, London.");
-  assert.strictEqual(result.translation, "Prof. Joyner of King's College, London.");
-});
-
-test('Translate Tea time is usually around 4 or 4.30. to American English', () => {
-  const result = translator.translate('Tea time is usually around 4 or 4.30.', 'british-to-american');
-  assert.isObject(result);
-  assert.property(result, 'text', 'result should have text property');
-  assert.property(result, 'translation', 'result should have translation property');
-  assert.strictEqual(result.text, 'Tea time is usually around 4 or 4.30.');
-  assert.strictEqual(result.translation, 'Tea time is usually around 4 or 4:30.');
-});
 /*
 Translate We watched the footie match for a while. to American English
 *Translate Paracetamol takes up to an hour to work. to American English
@@ -216,9 +261,9 @@ Translate We watched the footie match for a while. to American English
 *Translate Tea time is usually around 4 or 4.30. to American English
 
 
-Highlight translation in Mangoes are my favorite fruit.
-Highlight translation in I ate yogurt for breakfast.
-Highlight translation in We watched the footie match for a while.
-Highlight translation in Paracetamol takes up to an hour to work.
+*Highlight translation in Mangoes are my favorite fruit.
+*Highlight translation in I ate yogurt for breakfast.
+*Highlight translation in We watched the footie match for a while.
+*Highlight translation in Paracetamol takes up to an hour to work.
 
 */
