@@ -17,6 +17,23 @@ class Translator {
     if (text === undefined || locale === undefined || locale === '') return { error: fieldMissing };
     if (locale !== americanToBritish && locale !== britishToAmerican) return { error: invalidLocale };
 
+    const replaceTimeDelimiter = (translatedWords, translation, delimiter) => {
+      let digitRegex = new RegExp(`\\d+${delimiter[0]}\\d+`, 'gi');
+      return translation.replace(digitRegex, match => {
+        const toReplace = match.replace(delimiter[0], delimiter[1]);
+        translatedWords.push([toReplace]);
+        return toReplace;
+      });
+    };
+
+    const setTimeDelimiter = (translatedWords, translation, locale) => {
+      translation =
+        locale === americanToBritish
+          ? replaceTimeDelimiter(translatedWords, translation, [':', '.'])
+          : replaceTimeDelimiter(translatedWords, translation, ['.', ':']);
+      return translation;
+    };
+
     const setTranslatedText = (wordDictionary, translation, wordReplacer) => {
       Object.keys(wordDictionary).map(key => {
         let wordRegex = new RegExp(`(?<=\\s|^)\\b${key}\\b|(${key})`, 'gi');
@@ -86,6 +103,9 @@ class Translator {
 
     /*******************TRANSLATE***************** */
     translation = setTranslatedText(wordDictionary, translation, wordReplacer);
+
+    /***************SET TIME DELIMITER********************* */
+    translation = setTimeDelimiter(translatedWords, translation, locale);
 
     /***************HIGHLIGHT WORDS********************* */
     const highlightedTranslation = setClassToWord(translatedWords, translation, 'highlight');
