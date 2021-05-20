@@ -90,14 +90,14 @@ suite('Unit Tests', () => {
     assert.strictEqual(result.translation, 'Dr Grosh will see you now.');
   });
 
-  // test('Translate Lunch is at 12:15 today. to British English', () => {
-  //   const result = translator.translate('Lunch is at 12:15 today.', 'american-to-british');
-  //   assert.isObject(result);
-  //   assert.property(result, 'text', 'result should have text property');
-  //   assert.property(result, 'translation', 'result should have translation property');
-  //   assert.strictEqual(result.text, 'Lunch is at 12:15 today.');
-  //   assert.strictEqual(result.translation, 'Lunch is at 12.15 today.');
-  // });
+  test('Translate Lunch is at 12:15 today. to British English', () => {
+    const result = translator.translate('Lunch is at 12:15 today.', 'american-to-british');
+    assert.isObject(result);
+    assert.property(result, 'text', 'result should have text property');
+    assert.property(result, 'translation', 'result should have translation property');
+    assert.strictEqual(result.text, 'Lunch is at 12:15 today.');
+    assert.strictEqual(result.translation, 'Lunch is at 12.15 today.');
+  });
 });
 
 /*
@@ -195,14 +195,14 @@ test("Translate Prof Joyner of King's College, London. to American English", () 
   assert.strictEqual(result.translation, "Prof. Joyner of King's College, London.");
 });
 
-// test('Translate Tea time is usually around 4 or 4.30. to American English', () => {
-//   const result = translator.translate('Tea time is usually around 4 or 4.30.', 'british-to-american');
-//   assert.isObject(result);
-//   assert.property(result, 'text', 'result should have text property');
-//   assert.property(result, 'translation', 'result should have translation property');
-//   assert.strictEqual(result.text, 'Tea time is usually around 4 or 4.30.');
-//   assert.strictEqual(result.translation, 'Tea time is usually around 4 or 4:30.');
-// });
+test('Translate Tea time is usually around 4 or 4.30. to American English', () => {
+  const result = translator.translate('Tea time is usually around 4 or 4.30.', 'british-to-american');
+  assert.isObject(result);
+  assert.property(result, 'text', 'result should have text property');
+  assert.property(result, 'translation', 'result should have translation property');
+  assert.strictEqual(result.text, 'Tea time is usually around 4 or 4.30.');
+  assert.strictEqual(result.translation, 'Tea time is usually around 4 or 4:30.');
+});
 /*
 Translate We watched the footie match for a while. to American English
 *Translate Paracetamol takes up to an hour to work. to American English
